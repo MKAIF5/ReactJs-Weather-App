@@ -4,11 +4,10 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  // const [count, setCount] = useState(0)
 
   return (
     <>
-     <h1>Weather App</h1>
+     <h1>Weather App Using React</h1>
     </>
   )
 }
