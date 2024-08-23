@@ -1,42 +1,129 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #000000, #434343);
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.app-container {
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
   text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.app-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.9);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header {
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+h1 {
+  margin: 0;
+  font-size: 2.5em;
+  font-weight: bold;
 }
 
-.card {
-  padding: 2em;
+.search-container {
+  margin-top: 10px;
 }
 
-.read-the-docs {
-  color: #888;
+.search-input {
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1em;
+  color: #000;
+  background: #ffffff;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: #434343;
+}
+
+.search-input:focus {
+  background: #f0f0f0;
+  transform: scale(1.02);
+}
+
+main {
+  margin-top: 20px;
+}
+
+.weather-card {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.weather-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+}
+
+.city {
+  font-size: 2em;
+  margin: 0;
+}
+
+.weather-info {
+  margin: 20px 0;
+}
+
+.temperature {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.condition {
+  font-size: 1.5em;
+}
+
+.icon-container {
+  margin: 20px 0;
+}
+
+.weather-icon {
+  width: 80px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.weather-icon:hover {
+  transform: rotate(15deg) scale(1.1);
+}
+
+.details {
+  margin-top: 20px;
+}
+
+.detail {
+  margin: 5px 0;
+  font-size: 1em;
+  color: #e0e0e0;
 }
