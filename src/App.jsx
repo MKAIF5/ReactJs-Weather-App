@@ -11,6 +11,7 @@ import wind_icon from "./assets/wind.png"
 
 
 
+
 function App() {
   let ID = "9505fd1df737e20152fbd78cdb289b6a";
   let URL =
@@ -38,15 +39,17 @@ function App() {
               <h2 class="city">Karachi</h2>
               <div class="weather-info">
                 <div class="temperature">30°C</div>
+                <br />
                 <div class="condition">Cloudy</div>
               </div>
               <div class="icon-container">
-                <img src="sun-icon.svg" alt="Sunny" class="weather-icon" />
+                <img src={cloud_icon} alt="Sunny" class="weather-icon" />
               </div>
               <br />
               <div class="details">
-                <div class="detail">Humidity: 70%</div>
-                <div class="detail">Wind Speed: 10 Km/h</div>
+                <div class="detail">
+                  <img src={humidity_icon} alt="" /> Humidity <br />70%</div>
+                <div class="detail"><img src={wind_icon} alt="" />  Wind Speed <br /> 10 Km/h</div>
               </div>
             </div>
           </main>

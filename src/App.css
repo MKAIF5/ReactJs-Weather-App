@@ -137,10 +137,15 @@ main {
   display: flex;
   justify-content: center;
   gap: 7rem;
+  align-items: center;
 }
 
 .detail {
   margin: 5px 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
   font-size: 20px;
   color: #e0e0e0;
   font-weight: 900;
