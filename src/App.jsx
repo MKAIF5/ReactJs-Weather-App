@@ -42,12 +42,13 @@ function App() {
       const response = await fetch(URL);
       const data = response.json();
       console.log(data);
+      const icon  = allIcons[data.weather[0].icon] || clear_icon
       setWeatherData({
         humidity: data.main.humidity,
         windSpeed: data.wind.speed,
         temperature: Math.floor(data.main.temp),
         location: data.name,
-        icon: data.weather.icon
+        icon: icon
       })
 
     }
