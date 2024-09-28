@@ -13,9 +13,10 @@ import wind_icon from "./assets/wind.png"
 
 
 function App() {
-  let ID = "9505fd1df737e20152fbd78cdb289b6a";
-  let URL =
-    "https://api.openweathermap.org/data/2.5/weather?units=metric&appid=" + ID;
+
+  const ID = "9505fd1df737e20152fbd78cdb289b6a";
+  const URL = "https://api.openweathermap.org/data/2.5/weather?units=metric&appid=" + ID;
+  
 
   return (
     <>
