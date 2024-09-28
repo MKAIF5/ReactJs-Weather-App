@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import search_icon from "./assets/search.png"
 import clear_icon from "./assets/clear.png"
@@ -19,16 +19,22 @@ function App() {
   const search = async (city) => {
     try {
       const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=` + ID;
-      
+
       const response = await fetch(URL);
-      const data  = response.json();
-    } 
+      const data = response.json();
+      console.log(data);
+
+    }
     catch (error) {
 
     }
   }
 
+  useEffect(() => {
+    search("London");
+  }, [])
 
+  
   return (
     <>
       <div className="main">
