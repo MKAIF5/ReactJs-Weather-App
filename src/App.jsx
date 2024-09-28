@@ -14,8 +14,10 @@ import wind_icon from "./assets/wind.png"
 
 function App() {
 
-  const ID = "9505fd1df737e20152fbd78cdb289b6a";
+const [weatherData  , setWeatherData] = useState(false);
 
+
+  const ID = "9505fd1df737e20152fbd78cdb289b6a";
   const search = async (city) => {
     try {
       const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=` + ID;
@@ -34,7 +36,7 @@ function App() {
     search("London");
   }, [])
 
-  
+
   return (
     <>
       <div className="main">
