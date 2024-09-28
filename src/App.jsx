@@ -38,24 +38,25 @@ function App() {
   const search = async (city) => {
     try {
       const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=` + ID;
-
+  
       const response = await fetch(URL);
-      const data = response.json();
+      const data = await response.json(); // Fix here
       console.log(data);
-      const icon  = allIcons[data.weather[0].icon] || clear_icon
+      const icon = allIcons[data.weather[0].icon] || clear_icon;
+      const condition = data.weather[0].description; // New line
       setWeatherData({
         humidity: data.main.humidity,
         windSpeed: data.wind.speed,
         temperature: Math.floor(data.main.temp),
         location: data.name,
-        icon: icon
-      })
-
+        icon: icon,
+        condition: condition // New line
+      });
+    } catch (error) {
+      console.error(error);
     }
-    catch (error) {
-
-    }
-  }
+  };
+  
 
   useEffect(() => {
     search("London");
@@ -81,9 +82,9 @@ function App() {
           </header>
           <main>
             <div class="weather-card">
-              <h2 class="city">Karachi</h2>
+              <h2 class="city">{weatherData.location}</h2>
               <div class="weather-info">
-                <div class="temperature">30°C</div>
+                <div class="temperature">{weatherData.temperature}°C</div>
                 <br />
                 <div class="condition">Cloudy</div>
               </div>
@@ -93,8 +94,8 @@ function App() {
               <br />
               <div class="details">
                 <div class="detail">
-                  <img src={humidity_icon} alt="" /> Humidity <br />70%</div>
-                <div class="detail"><img src={wind_icon} alt="" />  Wind Speed <br /> 10 Km/h</div>
+                  <img src={humidity_icon} alt="" /> Humidity <br />{weatherData.humidity}%</div>
+                <div class="detail"><img src={wind_icon} alt="" />  Wind Speed <br /> {weatherData.windSpeed}Km/h</div>
               </div>
             </div>
           </main>
