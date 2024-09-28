@@ -17,6 +17,23 @@ function App() {
   const [weatherData, setWeatherData] = useState(false);
 
 
+  const allIcons = {
+    "01d": clear_icon,
+    "01d": clear_icon,
+    "02d": cloud_icon,
+    "02n": cloud_icon,
+    "03d": cloud_icon,
+    "03n": cloud_icon,
+    "04d": drizzle_icon,
+    "04n": drizzle_icon,
+    "09d": rain_icon,
+    "09n": rain_icon,
+    "10d": rain_icon,
+    "10n": rain_icon,
+    "13d": snow_icon,
+    "13n": snow_icon
+  }
+
   const ID = "9505fd1df737e20152fbd78cdb289b6a";
   const search = async (city) => {
     try {
@@ -28,7 +45,9 @@ function App() {
       setWeatherData({
         humidity: data.main.humidity,
         windSpeed: data.wind.speed,
-        temperature: Math.floor(data.main.temp)
+        temperature: Math.floor(data.main.temp),
+        location: data.name,
+        icon: data.weather.icon
       })
 
     }
