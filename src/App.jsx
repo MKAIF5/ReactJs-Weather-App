@@ -12,7 +12,6 @@ function App() {
         <div class="app-container">
           <header>
             <h1>Weather App</h1>
-            <br />
             <div class="search-container">
               <form>
                 <input
@@ -20,6 +19,7 @@ function App() {
                   placeholder="Enter Your City"
                   class="search-input"
                 />
+                <button>Submit</button>
               </form>
             </div>
           </header>
@@ -28,11 +28,15 @@ function App() {
               <h2 class="city">Karachi</h2>
               <div class="weather-info">
                 <div class="temperature">30°C</div>
-                <br />
+                <div class="condition">Cloudy</div>
+              </div>
               <div class="icon-container">
                 <img src="sun-icon.svg" alt="Sunny" class="weather-icon" />
               </div>
-                <div class="condition">Cloudy</div>
+              <br />
+              <div class="details">
+                <div class="detail">Humidity: 70%</div>
+                <div class="detail">Wind Speed: 10 Km/h</div>
               </div>
             </div>
           </main>
