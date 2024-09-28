@@ -14,17 +14,22 @@ import wind_icon from "./assets/wind.png"
 
 function App() {
 
-const [weatherData  , setWeatherData] = useState(false);
+  const [weatherData, setWeatherData] = useState(false);
 
 
   const ID = "9505fd1df737e20152fbd78cdb289b6a";
   const search = async (city) => {
     try {
-      const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=` + ID;
+      const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=` + ID;
 
       const response = await fetch(URL);
       const data = response.json();
       console.log(data);
+      setWeatherData({
+        humidity: data.main.humidity,
+        windSpeed: data.wind.speed,
+        temperature: Math.floor(data.main.temp)
+      })
 
     }
     catch (error) {
