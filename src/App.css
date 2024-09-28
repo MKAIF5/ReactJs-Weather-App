@@ -47,12 +47,16 @@ h1 {
 
 button{
   margin-left: 10px; 
-  background-color: rgb(31, 29, 29);
-  color: white;
-  padding: 1rem;
+  background-color: white;
+  padding: 10px;
   border: none; 
   border-radius: 20%;
   cursor: pointer;
+}
+
+button img{
+  width: 17px;
+  height: 17px;
 }
 
 .search-input {
@@ -132,7 +136,7 @@ main {
   margin-top: 20px;
   display: flex;
   justify-content: center;
-  gap: 5rem;
+  gap: 7rem;
 }
 
 .detail {

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import search_icon from "./assets/search.png"
 
 function App() {
   let ID = "9505fd1df737e20152fbd78cdb289b6a";
@@ -19,7 +20,7 @@ function App() {
                   placeholder="Enter Your City"
                   class="search-input"
                 />
-                <button>Submit</button>
+                <button><img src={search_icon} alt=""  style={{color: "white"}}/></button>
               </form>
             </div>
           </header>
