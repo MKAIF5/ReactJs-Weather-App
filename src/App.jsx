@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import search_icon from "./assets/search.png"
 import clear_icon from "./assets/clear.png"
 import cloud_icon from "./assets/cloud.png"
@@ -12,7 +12,6 @@ import "./App.css";
 
 
 function App() {
-
 
   const inputRef = useRef();
   const [weatherData, setWeatherData] = useState(false);
@@ -38,11 +37,20 @@ function App() {
   const ID = "9505fd1df737e20152fbd78cdb289b6a";
 
   const search = async (city) => {
+    if (city === "") {
+      alert("Enter Your City Name");
+      return;
+    }
     try {
       const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=` + ID;
 
       const response = await fetch(URL);
       const data = await response.json();
+      if (!response.ok) {
+        alert(data.message);
+        return;
+      }
+
       console.log(data);
       const icon = allIcons[data.weather[0].icon] || clear_icon;
       const condition = data.weather[0].description;
@@ -55,14 +63,10 @@ function App() {
         condition: condition
       });
     } catch (error) {
-      console.error(error);
+      setWeatherData(false);
+      console.error("Error In Fetching Weather Data");
     }
   };
-
-
-  useEffect(() => {
-    search("Karachi");
-  }, [])
 
 
   return (
@@ -76,7 +80,7 @@ function App() {
               <input
                 ref={inputRef}
                 type="text"
-                placeholder="Enter Your City"
+                placeholder="Enter Your City Name"
                 class="search-input"
               />
               <button><img src={search_icon}
@@ -88,25 +92,28 @@ function App() {
               {/* </form> */}
             </div>
           </header>
-          <main>
-            <div class="weather-card">
-              <div class="icon-container">
-                <img src={weatherData.icon} alt="" class="weather-icon" />
+          {weatherData ? <>
+            <main>
+              <div class="weather-card">
+                <div class="icon-container">
+                  <img src={weatherData.icon} alt="" class="weather-icon" />
+                </div>
+                <br />
+                <h2 class="city">{weatherData.location}</h2>
+                <div class="weather-info">
+                  <div class="temperature">{weatherData.temperature}°C</div>
+                </div>
+                <br />
+                <div class="details">
+                  <div class="detail">
+                    <img src={humidity_icon} alt="" /> Humidity <br />{weatherData.humidity}%</div>
+                  <div class="detail"><img src={wind_icon} alt="" />  Wind Speed <br /> {weatherData.windSpeed}Km/h</div>
+                </div>
               </div>
-              <br />
-              <h2 class="city">{weatherData.location}</h2>
-              <div class="weather-info">
-                <div class="temperature">{weatherData.temperature}°C</div>
-              </div>
-              <br />
-              <div class="details">
-                <div class="detail">
-                  <img src={humidity_icon} alt="" /> Humidity <br />{weatherData.humidity}%</div>
-                <div class="detail"><img src={wind_icon} alt="" />  Wind Speed <br /> {weatherData.windSpeed}Km/h</div>
-              </div>
-            </div>
-          </main>
+            </main>
+          </> : <></>}
         </div>
+
       </div>
     </>
   );
