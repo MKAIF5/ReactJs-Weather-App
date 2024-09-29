@@ -37,23 +37,28 @@ function App() {
   const ID = "9505fd1df737e20152fbd78cdb289b6a";
 
   const search = async (city) => {
+
     if (city === "") {
       alert("Enter Your City Name");
       return;
     }
+
     try {
+
       const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=` + ID;
 
       const response = await fetch(URL);
       const data = await response.json();
+
       if (!response.ok) {
         alert(data.message);
         return;
       }
-
       console.log(data);
+
       const icon = allIcons[data.weather[0].icon] || clear_icon;
       const condition = data.weather[0].description;
+
       setWeatherData({
         humidity: data.main.humidity,
         windSpeed: data.wind.speed,
@@ -62,6 +67,7 @@ function App() {
         icon: icon,
         condition: condition
       });
+
     } catch (error) {
       setWeatherData(false);
       console.error("Error In Fetching Weather Data");
@@ -70,6 +76,7 @@ function App() {
 
 
   return (
+
     <>
       <div className="main">
         <div class="app-container">
@@ -116,6 +123,7 @@ function App() {
 
       </div>
     </>
+
   );
 }
 
