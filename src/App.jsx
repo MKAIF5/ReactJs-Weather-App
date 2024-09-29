@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import search_icon from "./assets/search.png"
 import clear_icon from "./assets/clear.png"
 import cloud_icon from "./assets/cloud.png"
@@ -8,7 +7,7 @@ import humidity_icon from "./assets/humidity.png"
 import rain_icon from "./assets/rain.png"
 import snow_icon from "./assets/snow.png"
 import wind_icon from "./assets/wind.png"
-
+import "./App.css";
 
 
 
@@ -35,31 +34,32 @@ function App() {
   }
 
   const ID = "9505fd1df737e20152fbd78cdb289b6a";
+
   const search = async (city) => {
     try {
       const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=` + ID;
-  
+
       const response = await fetch(URL);
-      const data = await response.json(); // Fix here
+      const data = await response.json();
       console.log(data);
       const icon = allIcons[data.weather[0].icon] || clear_icon;
-      const condition = data.weather[0].description; // New line
+      const condition = data.weather[0].description;
       setWeatherData({
         humidity: data.main.humidity,
         windSpeed: data.wind.speed,
         temperature: Math.floor(data.main.temp),
         location: data.name,
         icon: icon,
-        condition: condition // New line
+        condition: condition
       });
     } catch (error) {
       console.error(error);
     }
   };
-  
+
 
   useEffect(() => {
-    search("London");
+    search("Karachi");
   }, [])
 
 
@@ -82,14 +82,13 @@ function App() {
           </header>
           <main>
             <div class="weather-card">
+              <div class="icon-container">
+                <img src={weatherData.icon} alt="" class="weather-icon" />
+              </div>
+              <br />
               <h2 class="city">{weatherData.location}</h2>
               <div class="weather-info">
                 <div class="temperature">{weatherData.temperature}°C</div>
-                <br />
-                <div class="condition">Cloudy</div>
-              </div>
-              <div class="icon-container">
-                <img src={cloud_icon} alt="Sunny" class="weather-icon" />
               </div>
               <br />
               <div class="details">
