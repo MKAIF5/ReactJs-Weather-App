@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import search_icon from "./assets/search.png"
 import clear_icon from "./assets/clear.png"
 import cloud_icon from "./assets/cloud.png"
@@ -13,6 +13,8 @@ import "./App.css";
 
 function App() {
 
+
+  const inputRef = useRef();
   const [weatherData, setWeatherData] = useState(false);
 
 
@@ -70,14 +72,20 @@ function App() {
           <header>
             <h1>Weather App</h1>
             <div class="search-container">
-              <form>
-                <input
-                  type="text"
-                  placeholder="Enter Your City"
-                  class="search-input"
-                />
-                <button><img src={search_icon} alt="" style={{ color: "white" }} /></button>
-              </form>
+              {/* <form> */}
+              <input
+                ref={inputRef}
+                type="text"
+                placeholder="Enter Your City"
+                class="search-input"
+              />
+              <button><img src={search_icon}
+                alt=""
+                style={{ color: "white" }}
+                onClick={() => search(inputRef.current.value)}
+              />
+              </button>
+              {/* </form> */}
             </div>
           </header>
           <main>
